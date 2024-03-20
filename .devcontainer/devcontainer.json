@@ -1,0 +1,32 @@
+{
+    "name": "godev",
+    "workspaceFolder": "/workspace",
+    "dockerComposeFile": [
+        "docker-compose.yml"
+    ],
+    "service": "godev",
+    "postStartCommand": "go version",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "workbench.colorTheme": "Solarized Dark"
+            },
+            "extensions": [
+                "golang.go",
+                "ms-azuretools.vscode-docker"
+            ]
+        }
+    },
+    "forwardPorts": [
+        8081,
+        "pyroscope:4040"
+    ],
+    "portsAttributes": {
+        "8081": {
+            "label": "Go Web Server"
+        },
+        "pyroscope:4040": {
+            "label": "Pyroscope Web UI"
+        }
+    },
+}

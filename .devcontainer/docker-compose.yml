@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  godev:
+    container_name: godev
+    build:
+      context: ../
+      dockerfile: ./.devcontainer/Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - ${HOME}/.ssh:/root/.ssh:ro
+      - ../:/workspace:cached
+      - /var/run/docker.sock:/var/run/docker.sock
+  pyroscope:
+    container_name: pyroscope
+    image: pyroscope/pyroscope:latest
+    command: server
+    volumes:
+      - ./pyroscope.yml:/etc/pyroscope/server.yml
